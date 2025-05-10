@@ -11,12 +11,12 @@
 </head>
 <body>
     <?php
-    $fecha=date("Y/m/d");
+    $fechaActual = date("Y-m-d H:i:s");
     $conexion = mysqli_connect("localhost","root","","sistemagestiontareas")or
     die("Problemas de conexión");
 
-    mysqli_query($conexion,"INSERT INTO tareas (id,usuario_id,titulo,descripcion,fecha_creacion,completada)
-    VALUE ('',$id,'$_REQUEST[titulo]','$_REQUEST[descripcion]',$fecha,'')")or
+    mysqli_query($conexion,"INSERT INTO tareas (usuario_id,titulo,descripcion,fecha_creacion,completada)
+    VALUE ('$id','$_REQUEST[titulo]','$_REQUEST[descripcion]','$fechaActual',0)")or
     die("Problemas en el select:".mysqli_error($conexion));
     if(mysqli_affected_rows($conexion)>0){
         echo "Tarea registrada correctamente";

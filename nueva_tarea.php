@@ -27,32 +27,11 @@
     $registros=mysqli_query($conexion,"SELECT id, usuario_id, titulo, descripcion, fecha_creacion, completada FROM tareas
     WHERE usuario_id=$id")or
     die("Problemas en el select:".mysqli_error($conexion));
-    if (mysqli_fetch_row($registros)){
-        while(mysqli_fetch_row($registros)){
-            echo "____________________________________________________________<br>";
-            echo $reg['id']."<br>";
-            echo $reg['usuario_id']."<br>";
-            echo $reg['titulo']."<br>";
-            echo $reg['descripcion']."<br>";
-            echo $reg['fecha_creacion']."<br>";
-            echo $reg['completada']."<br>";
-        }
+    if ($reg=mysqli_fetch_row($registros)){
+        echo '';
     }else{
         echo "No hay tareas registradas aún.";
     }
     ?>
-    <hr>
-    <a href=""> 
-        <button>Añadir Tarea</button>
-    </a>
-    <a href=""> 
-        <button>Eliminar Tarea</button>
-    </a>
-    <a href=""> 
-        <button>Modificar Tarea</button>
-    </a>
-    <a href=""> 
-        <button>Marcar como completada</button>
-    </a>
 </body>
 </html>

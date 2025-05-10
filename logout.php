@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EditarTarea</title>
+    <title>EliminarTarea</title>
 </head>
 <body>
     <?php
@@ -14,8 +14,8 @@
     $registros=mysqli_query($conexion,"select * from tareas where usuario_id=$id") or
     die ("Problemas en el select:".mysqli_error($conexion));
     ?>
-    <form action="editar_tareaphp.php" method="post">
-        seleccione el titulo de la tarea a modificar
+    <form action="logoutphp.php" method="post">
+        seleccione el titulo de la tarea a eliminar
         <select name="idtarea" required>
         <?php
         while($reg=mysqli_fetch_array($registros)){

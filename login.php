@@ -8,9 +8,9 @@
 <body>
     <form action="loginphp.php" method="post">
         Ingrese su correo: <br>
-        <input type="mail" name="correo"><br>
+        <input type="mail" name="correo" required><br>
         Cree su contraseña: <br>
-        <input type="password" name="contrasena"><br><br>
+        <input type="password" name="contrasena" required><br><br>
         <input type="submit" name="Enviar"><br>
     </form>
 </body>

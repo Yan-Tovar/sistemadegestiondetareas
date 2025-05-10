@@ -8,6 +8,10 @@
 <body>
     <?php
     session_start();
+    if (isset($_GET['cerrarsesion'])) {
+        $_SESSION = array();
+        header("location: login.php");
+    }
     $conn = new mysqli('localhost', 'root', '', 'sistemagestiontareas');
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $correo = $_POST['correo'];
