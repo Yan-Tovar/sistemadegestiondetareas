@@ -7,6 +7,9 @@
 </head>
 <body>
     <?php
+    session_start();
+    $id=$_SESSION['usuario_id'];
+    if(isset($id)){
     if(isset($_REQUEST['idtarea'])){
         $valor=1;
         $conexion=mysqli_connect("localhost","root","","sistemagestiontareas") or 
@@ -21,7 +24,9 @@
     else{
         echo "";
     }
-    
+}else{
+    header("location: index.php");
+}
     ?>
 </body>
 </html>

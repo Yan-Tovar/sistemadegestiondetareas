@@ -30,6 +30,8 @@
     <?php
     session_start();
     $id=$_SESSION['usuario_id'];
+    if(isset($id)){
+
     $conexion = mysqli_connect("localhost","root","","sistemagestiontareas")or
     die("Problemas de conexión");
     
@@ -41,17 +43,18 @@
     }else{?>
     <table>
         <tr>
-            <th>Id</th>
+            <th>Id tarea</th>
             <th>Id Usuario</th>
             <th>Titulo</th>
             <th>Descripción</th>
             <th>Fecha Creación</th>
             <th>Estado</th>
+            <th>Acciones</th>
         </tr>
         <?php
         while ($reg = mysqli_fetch_array($registros)) {
             echo "<tr>
-                <td>{$reg['titulo']}</td>
+                <td>{$reg['id']}</td>
                 <td>{$id}</td>
                 <td>{$reg['titulo']}</td>
                 <td>{$reg['descripcion']}</td>
@@ -69,6 +72,16 @@
             }
         
             echo "</td>
+                <td>
+                    <form action='editar_tareaphp.php' method='post'>
+                        <input type='hidden' name='idtarea' value='{$reg['id']}'>
+                        <input type='submit' value='Editar'>
+                    </form>
+                    <form action='logoutphp.php' method='post'>
+                        <input type='hidden' name='idtarea' value='{$reg['id']}'>
+                        <input type='submit' value='Eliminar'>
+                    </form>
+                </td>
             </tr>";
         }
            
@@ -79,15 +92,14 @@
     <a href="nueva_tarea.php">
         <button>Añadir Tarea</button>
     </a>
-    <a href="editar_tarea.php"> 
-        <button>Editar Tarea</button>
-    </a>
-    <a href="logout.php"> 
-        <button>Eliminar Tarea</button>
-    </a>
     <hr>
     <a href="loginphp.php?cerrarsesion"> 
         <button>Cerrar Sesion</button>
     </a>
+    <?php
+    }else{
+        header("Location: index.php");
+    }
+    ?>
 </body>
 </html>

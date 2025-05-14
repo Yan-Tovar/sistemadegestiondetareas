@@ -10,6 +10,8 @@
     <title>NuevaTarea</title>
 </head>
 <body>
+    <?php
+    if(isset($id)){?>
     Ingrese: 
     <hr>
     <form action="nueva_tareaphp.php" method="post">
@@ -33,5 +35,9 @@
         echo "No hay tareas registradas aún.";
     }
     ?>
+    <?php
+    }else{
+        header("Location: index.php");
+    }?>
 </body>
 </html>

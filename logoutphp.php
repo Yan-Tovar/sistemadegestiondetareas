@@ -7,6 +7,9 @@
 </head>
 <body>
     <?php
+    session_start();
+    $id=$_SESSION['usuario_id'];
+    if(isset($id)){
     $conexion=mysqli_connect("localhost","root","","sistemagestiontareas") or 
     die ("Problemas con la conexión");
 
@@ -15,6 +18,9 @@
     die("Problemas en el select:".mysqli_error($conexion));
     echo "El curso fue eliminado con exito";
     header("location: tareas.php");
+    }else{
+        header("Location: index.php");
+    }
     ?>
 </body>
 </html>

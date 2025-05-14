@@ -7,6 +7,9 @@
 </head>
 <body>
     <?php
+    session_start();
+    $id=$_SESSION['usuario_id'];
+    if(isset($id)){
     $conexion=mysqli_connect("localhost","root","","sistemagestiontareas") or 
     die ("Problemas con la conexión");
 
@@ -23,6 +26,10 @@
         <br><br>
         <input type="submit" value="Modificar">
     </form>
-    
+    <?php
+    }else{
+        header("Location: index.php");
+    }
+    ?>
 </body>
 </html>
